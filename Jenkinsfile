@@ -5,11 +5,11 @@ pipeline {
       parallel {
         stage('Clean') {
           steps {
-            sh 'mvn clean'
+            bat 'mvn clean'
           }
         }
 
-        stage('') {
+        stage('Echo') {
           steps {
             echo 'Cleaning in progress ...'
           }
