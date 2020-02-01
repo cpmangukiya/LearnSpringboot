@@ -39,7 +39,8 @@ pipeline {
     stage('Call run hook') {
       steps {
         bat 'set JENKINS_NODE_COOKIE=DontKillMe'
-        bat 'start java -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar'
+        bat 'set BUILD_ID=dontKillMe'
+        bat 'start java -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar &'
       }
     }
 
