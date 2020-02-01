@@ -2,8 +2,19 @@ pipeline {
   agent any
   stages {
     stage('Clean') {
-      steps {
-        sh 'mvn clean'
+      parallel {
+        stage('Clean') {
+          steps {
+            sh 'mvn clean'
+          }
+        }
+
+        stage('') {
+          steps {
+            echo 'Cleaning in progress ...'
+          }
+        }
+
       }
     }
 
