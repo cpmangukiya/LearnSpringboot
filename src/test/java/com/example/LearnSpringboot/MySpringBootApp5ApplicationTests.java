@@ -8,6 +8,7 @@ class LearnSpringbootApplicationTests {
 
 	@Test
 	void contextLoads() {
+		int i = 0;
 	}
 
 }
