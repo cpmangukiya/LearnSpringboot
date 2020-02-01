@@ -38,7 +38,9 @@ pipeline {
 
     stage('Call run hook') {
       steps {
-        bat 'mvn spring-boot:run'
+        withEnv(['JENKINS_NODE_COOKIE=DontKillMe']) {
+            bat "start java -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar"
+        }
       }
     }
 
