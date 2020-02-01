@@ -38,9 +38,8 @@ pipeline {
 
     stage('Call run hook') {
       steps {
-        withEnv(['JENKINS_NODE_COOKIE=DontKillMe']) {
-            bat "start java -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar"
-        }
+        bat "JENKINS_NODE_COOKIE=DontKillMe"
+        bat "start java -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar"
       }
     }
 
