@@ -1,1 +1,1 @@
-TASKKILL /F /IM “javaw.exe”
+taskkill /IM "javaw.exe" /F /FI "STATUS eq RUNNING"
