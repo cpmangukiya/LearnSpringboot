@@ -8,9 +8,9 @@ pipeline {
       parallel {
         stage('Clean') {
           steps {
-            bat './JenkinsCleanRunningProcess.bat'
             deleteDir()
             checkout scm
+            bat './JenkinsCleanRunningProcess.bat'
             bat 'mvn clean'
           }
         }
