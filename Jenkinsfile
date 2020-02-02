@@ -12,6 +12,7 @@ pipeline {
         stage('Echo') {
           steps {
             echo "Running on ${env.JAVA_HOME} and ${env.BUILD_ID}"
+            bat "wmic process where "name like '%javaw.exe%'" delete"
           }
         }
 
@@ -36,7 +37,7 @@ pipeline {
       }
     }
 
-    stage('Trigger Run') {
+    stage('Trigger Local Run') {
       steps {
         withEnv(overrides: ['JENKINS_NODE_COOKIE=dontkillMePlz']) {
           echo "Running Trigger on ${env.JAVA_HOME} and ${env.BUILD_ID} and ${env.JENKINS_NODE_COOKIE}"
@@ -46,6 +47,12 @@ pipeline {
       }
     }
 
+    stage('Sanity check') {
+      steps {
+        input 'Does the local environment look ok?'
+      }
+    }
+    
     stage('Deploy - Staging') {
       steps {
         echo './deploy staging'
@@ -53,7 +60,7 @@ pipeline {
       }
     }
 
-    stage('Sanity check') {
+    stage('After smoke test') {
       steps {
         input 'Does the staging environment look ok?'
       }
