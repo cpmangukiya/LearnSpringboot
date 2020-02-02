@@ -38,7 +38,6 @@ pipeline {
 
     stage('Trigger Run') {
       steps {
-        powershell 'wmic process where "name like \'%javaw%\'" Call Terminate'
         withEnv(overrides: ['JENKINS_NODE_COOKIE=dontkillMePlz']) {
           echo "Running Trigger on ${env.JAVA_HOME} and ${env.BUILD_ID} and ${env.JENKINS_NODE_COOKIE}"
           bat 'start javaw -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar'
