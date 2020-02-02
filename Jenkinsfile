@@ -77,6 +77,8 @@ pipeline {
     success {
       echo 'I succeeeded!'
       junit '**/target/*.xml'
+      mail to: 'chintanpmangukiya@gmail.com', subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
+             body: "You are live!"
     }
 
     unstable {
@@ -85,7 +87,8 @@ pipeline {
 
     failure {
       echo 'I failed :('
-      mail to: 'chintanpmangukiya@gmail.com', subject: 'The LearnSpringboot Pipeline failed :('
+      mail to: 'chintanpmangukiya@gmail.com', subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+             body: "Something is wrong with ${env.BUILD_URL}"
     }
 
     changed {
