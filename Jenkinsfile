@@ -11,7 +11,7 @@ pipeline {
 
         stage('Echo') {
           steps {
-            echo 'Cleaning in progress ...'
+            echo "Running on ${env.JAVA_HOME} and ${env.BUILD_ID}"
           }
         }
 
