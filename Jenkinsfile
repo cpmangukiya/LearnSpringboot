@@ -8,7 +8,7 @@ pipeline {
       parallel {
         stage('Clean') {
           steps {
-            bat "wmic process where \"name like '%javaw.exe%'\" delete"
+            powershell "wmic process where \"name like '%javaw.exe%'\" delete"
             deleteDir()
             checkout scm
             bat 'mvn clean'
