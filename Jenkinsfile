@@ -5,14 +5,14 @@ pipeline {
       parallel {
         stage('Clean') {
           steps {
+            bat "wmic process where \"name like '%javaw.exe%'\" delete"
             bat 'mvn clean'
           }
         }
 
         stage('Echo') {
           steps {
-            echo "Running on ${env.JAVA_HOME} and ${env.BUILD_ID}"
-            bat "wmic process where \"name like '%javaw.exe%'\" delete"
+            echo "Starting CI/CD with ${env.JAVA_HOME} and ${env.BUILD_ID}"
           }
         }
 
