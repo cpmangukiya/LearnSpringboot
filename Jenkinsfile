@@ -76,7 +76,7 @@ pipeline {
 
     success {
       echo 'I succeeeded!'
-      junit '**/target/*.xml'
+      junit '**/target/surefire-reports/*.xml'
       mail to: 'chintanpmangukiya@gmail.com', subject: "Success Pipeline: ${currentBuild.fullDisplayName}",
              body: "You are live!"
     }
@@ -88,7 +88,7 @@ pipeline {
     failure {
       echo 'I failed :('
       mail to: 'chintanpmangukiya@gmail.com', subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
-             body: "Something is wrong with ${env.BUILD_URL}"
+             body: "Something went wrong with ${env.BUILD_URL}"
     }
 
     changed {
