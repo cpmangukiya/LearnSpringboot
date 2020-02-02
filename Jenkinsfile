@@ -76,6 +76,7 @@ pipeline {
 
     success {
       echo 'I succeeeded!'
+      junit '**/target/*.xml'
     }
 
     unstable {
@@ -84,6 +85,7 @@ pipeline {
 
     failure {
       echo 'I failed :('
+      mail to: 'chintanpmangukiya@gmail.com', subject: 'The LearnSpringboot Pipeline failed :('
     }
 
     changed {
