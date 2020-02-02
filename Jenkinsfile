@@ -8,7 +8,7 @@ pipeline {
       parallel {
         stage('Clean') {
           steps {
-            bat 'start TASKKILL /F /IM "javaw.exe"'
+            bat 'taskkill /IM "javaw.exe" /F /FI "STATUS eq RUNNING"'
             deleteDir()
             checkout scm
             bat 'mvn clean'
