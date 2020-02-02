@@ -40,7 +40,7 @@ pipeline {
       steps {
         withEnv(['JENKINS_NODE_COOKIE=dontkillMePlz']) {
             echo "Running Trigger on ${env.JAVA_HOME} and ${env.BUILD_ID} and ${env.JENKINS_NODE_COOKIE}"
-            bat 'start java -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar'
+            bat 'start javaw -jar ./target/LearnSpringboot-0.0.1-SNAPSHOT.jar'
         }
       }
     }
